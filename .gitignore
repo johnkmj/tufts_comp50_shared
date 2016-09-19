@@ -1,3 +1,6 @@
+# ignore temp pptx stuff
+~$*
+
 # ignore mac stuff
 .DS_Store
 
