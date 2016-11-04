@@ -5,7 +5,7 @@ var express = require('express');
 function get_eve() {
   // Configure the request
   var options = {
-    url: 'localhost/data',
+    url: 'http://localhost:5000/data',
     method: 'GET',
   }
 
@@ -25,5 +25,5 @@ function get_eve() {
 app.listen(9300);
 
 app.get('/', function (req, res) {
-  res.send('hello')
+  get_eve().res.send()
 })
