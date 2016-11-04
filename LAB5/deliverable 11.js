@@ -1,5 +1,6 @@
 var request = require('request');
 var express = require('express');
+var app = express();
 
 // gets and returns eve
 function get_eve() {
@@ -12,8 +13,8 @@ function get_eve() {
   // Start the request
   request(options, function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    return(body);
-    // callback(body);
+    // return(body);
+    callback(body);
   }
   else
     console.log(error);
