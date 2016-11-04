@@ -1,0 +1,1 @@
+curl -H "IF-MATCH: 5979c3ea010a1bf368ea638b49d77adc33e220f3" -i http://localhost:5000/data/581bbaf0eb1d4d0909abbf2e -d 'temp=8.8' --request PATCH

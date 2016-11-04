@@ -1,0 +1,1 @@
+curl -d '[{"lat": 42.52, "long": 71.233, "temp": 30.4}]' -H 'content-type: application/json' http://localhost:5000/data

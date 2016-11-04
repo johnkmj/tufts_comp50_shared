@@ -1,0 +1,2 @@
+jkoh01, your ports are 9300-9319
+PLEASE BE SURE TO WORK ONLY ON iot-dev. THANKS!
