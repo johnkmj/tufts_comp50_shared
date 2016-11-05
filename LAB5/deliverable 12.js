@@ -23,7 +23,7 @@ var table_ify = function(json) {
   , heading: [ 'updated', 'temp', 'long', 'links', 'lat', 'created', 'id', 'etag' ]
   , rows: entry
   })
-  return(table)
+  return(table.toString())
 }
 
 var eve_server = {
