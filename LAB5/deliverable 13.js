@@ -12,7 +12,8 @@ var html_table_ify = function(json) {
   
   items = json._items;
   var entries = items.map(function (entry) {
-    return ('<tr><td>' + entry.lat + '</td><td>' + entry.long + '</td><td>' +entry.temp + '</td></tr>');
+    var row = '<tr><td>' + entry.lat.toString() + '</td><td>' + entry.long.toString() + '</td><td>' +entry.temp.toString() + '</td></tr>';
+    return row;
   });  
 
   var body = '<html><body><table border=1><tr><th>latitude</th><th>longitude</th><th>temperature</th></tr>' 
