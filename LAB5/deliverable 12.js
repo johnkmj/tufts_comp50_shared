@@ -12,7 +12,7 @@ var table_ify = function(json) {
   
   items = json._items;
   var entry = items.map(function (entry) {
-      var link_entry = entry._links.self.href + '(' + entry._links.self.title + ')'
+      var link_entry = entry._links.self.href + ' (' + entry._links.self.title + ')'
       return [entry._updated, entry.temp, entry.long, link_entry, entry.lat, entry._created, entry._id, entry._etag]
     });  
 
