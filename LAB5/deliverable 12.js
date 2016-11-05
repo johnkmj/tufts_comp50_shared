@@ -1,7 +1,9 @@
 var express = require('express');
+var Promise = require('bluebird');
+
 var app = express();
 var request = Promise.promisify(require('request'));
-var Promise = require('bluebird');
+
 
 
 var eve_server = {
