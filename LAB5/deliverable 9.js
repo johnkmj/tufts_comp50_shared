@@ -21,10 +21,13 @@ function get_eve() {
   })  
 }
 
+get_eve(function(err, data) {
+    console.log(data.toString());
+});
 
-// at my port
-app.listen(9300);
+// // at my port
+// app.listen(9300);
 
-app.get('/', function (req, res) {
-  get_eve().res.send()
-})
+// app.get('/', function (req, res) {
+//   get_eve().res.send()
+// })
