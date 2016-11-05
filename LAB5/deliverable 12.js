@@ -32,7 +32,7 @@ app.get('/', function (req, res, next) {
   })
   .then(table_ify)
   .then(function(data) {
-    res.send(data);
+    res.json(data);
   })
   .catch(next) //good old habits
 })
