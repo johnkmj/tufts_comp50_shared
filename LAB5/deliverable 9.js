@@ -13,7 +13,6 @@ function get_eve(callback) {
   // Start the request
   request(options, function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    console.log("Success");
     // return(body);
     callback(body);
   }
