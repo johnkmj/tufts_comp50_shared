@@ -24,12 +24,12 @@ app.get('/', function (req, res, next) {
   .then(function(data) {
     res.send(data);
   })
-  // .catch(next) //good old habits
+  .catch(next) //good old habits
 })
 
 
 
-// // error handling just in case
-// app.use(function (err, req, res, next) {
-//   console.log("Ooops something went wrong");
-// })
+// error handling just in case
+app.use(function (err, req, res, next) {
+  console.log("Ooops something went wrong");
+})
