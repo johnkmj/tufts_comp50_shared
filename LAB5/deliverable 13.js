@@ -10,7 +10,7 @@ var AsciiTable = require('ascii-table')
 var html_table_ify = function(json) {
   items = json._items;
   var entries = items.map(function (entry) {
-    var row = '<tr><td>' + (entry.lat or '') + '</td><td>' + (entry.long or '') + '</td><td>' + (entry.temp or '') + '</td></tr>';
+    var row = '<tr><td>' + (entry.lat || '') + '</td><td>' + (entry.long || '') + '</td><td>' + (entry.temp || '') + '</td></tr>';
     return row;
   });  
 
