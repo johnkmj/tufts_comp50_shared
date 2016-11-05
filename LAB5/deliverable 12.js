@@ -1,30 +1,29 @@
-var request = require('request');
 var express = require('express');
 var app = express();
+var request = Promise.promisify(require('request'));
+var Promise = require('bluebird');
 
-// gets and returns eve
-function get_eve() {
-  // Configure the request
-  var options = {
-    url: 'localhost/data',
+
+var eve_server = {
+    url: 'http://localhost:5000/data',
     method: 'GET',
   }
-
-  // Start the request
-  request(options, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    // return(body);
-    callback(body);
-  }
-  else
-    console.log(error);
-  })  
-}
 
 
 // at my port
 app.listen(9300);
 
-app.get('/', function (req, res) {
-  res.send('hello')
+
+app.get('/', function (req, res, next) {
+  request(eve_server)
+  .then(JSON.parse) //parse res
+  .then(res.send())
+  .catch(next) //good old habits
+})
+
+
+
+// error handling just in case
+app.use(function (err, req, res, next) {
+  console.log("Ooops something went wrong");
 })
