@@ -18,11 +18,12 @@ var table_ify = function(json) {
     
   //   rows += entry;
   // }
-  var table = new AsciiTable().fromJSON({
+  var table = new AsciiTable().factory({
     title: 'Get Response'
   , heading: [ 'updated', 'temp', 'long', 'links', 'lat', 'created', 'id', 'etag' ]
   , rows: entry
   })
+  
   return(table)
 }
 
