@@ -5,6 +5,16 @@ var app = express();
 var request = Promise.promisify(require('request'));
 
 
+var table_ify = function(json) {
+  items = json._items;
+  var entry = []
+  for (var i = items.length - 1; i >= 0; i--) {
+    entry[i] = JSON.stringify(items[i])
+    entry[i] += "\n"
+    entry[i] += "------------------------------------------------------"
+  }
+  return(entry)
+}
 
 var eve_server = {
     url: 'http://localhost:5000/data',
@@ -21,6 +31,7 @@ app.get('/', function (req, res, next) {
   .then(function(json) {
     return(JSON.parse(json.body))
   })
+  .then(table_ify)
   .then(function(data) {
     res.send(data);
   })
