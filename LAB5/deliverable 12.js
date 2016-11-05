@@ -19,11 +19,14 @@ app.listen(9300);
 app.get('/', function (req, res, next) {
   request(eve_server)
   .then(function(json) {
-    return(JSON.parse(json))
+    console.log(json)
   })
-  .then(function(data) {
-    res.send(data);
-  })
+  // .then(function(json) {
+  //   return(JSON.parse(json))
+  // })
+  // .then(function(data) {
+  //   res.send(data);
+  // })
   // .catch(next) //good old habits
 })
 
