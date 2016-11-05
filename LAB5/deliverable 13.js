@@ -8,8 +8,6 @@ var AsciiTable = require('ascii-table')
 
 
 var html_table_ify = function(json) {
-  var rows = []
-  
   items = json._items;
   var entries = items.map(function (entry) {
     var row = '<tr><td>' + entry.lat.toString() + '</td><td>' + entry.long.toString() + '</td><td>' +entry.temp.toString() + '</td></tr>';
@@ -54,4 +52,5 @@ app.get('/', function (req, res, next) {
 // error handling just in case
 app.use(function (err, req, res, next) {
   console.log("Ooops something went wrong");
+  console.log(err);
 })
