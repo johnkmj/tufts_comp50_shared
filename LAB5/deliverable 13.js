@@ -24,7 +24,7 @@ var html_table_ify = function(json) {
 
   body += '</table></body></html>'
 
-  return(table)
+  return(body)
 }
 
 var eve_server = {
