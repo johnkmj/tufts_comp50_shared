@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 // gets and returns eve
-function get_eve() {
+function get_eve(callback) {
   // Configure the request
   var options = {
     url: 'http://localhost:5000/data',
@@ -17,7 +17,8 @@ function get_eve() {
     callback(body);
   }
   else
-    console.log(error);
+    callback(error);
+    // console.log(error);
   })  
 }
 
