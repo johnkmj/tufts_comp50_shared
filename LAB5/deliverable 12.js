@@ -9,9 +9,7 @@ var table_ify = function(json) {
   items = json._items;
   var entry = []
   for (var i = items.length - 1; i >= 0; i--) {
-    entry[i] = JSON.stringify(items[i])
-    entry[i] += "\n"
-    entry[i] += "------------------------------------------------------"
+    entry[i] = JSON.stringify(items[i], null, 3) + '\n'
   }
   return(entry)
 }
