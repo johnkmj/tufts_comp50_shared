@@ -4,14 +4,26 @@ var Promise = require('bluebird');
 var app = express();
 var request = Promise.promisify(require('request'));
 
+var AsciiTable = require('ascii-table')
+
 
 var table_ify = function(json) {
+  var rows = []
+  
   items = json._items;
-  var entry = []
+  
   for (var i = items.length - 1; i >= 0; i--) {
-    entry[i] = JSON.stringify(items[i], null, 3) + '\n'
+    var entry = items[i].map(function (entry) {
+      return [entry._updated, entry.temp, entry.long, entry._links, entry.lat, entry._created, entry._id, entry._etag]
+    });
+    rows += entry;
   }
-  return(entry)
+  var table = new AsciiTable().fromJSON({
+    title: 'Get Response'
+  , heading: [ 'updated', 'temp', 'long', 'links', 'lat', 'created', 'id', 'etag' ]
+  , rows: rows
+  })
+  return(table)
 }
 
 var eve_server = {
@@ -25,14 +37,13 @@ app.listen(9300);
 
 
 app.get('/', function (req, res, next) {
-  res.setHeader('Content-Type', 'application/json');
   request(eve_server)
   .then(function(json) {
     return(JSON.parse(json.body))
   })
   .then(table_ify)
   .then(function(data) {
-    res.json(data);
+    res.send(data);
   })
   .catch(next) //good old habits
 })
