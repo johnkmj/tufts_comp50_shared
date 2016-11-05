@@ -21,9 +21,7 @@ app.get('/', function (req, res, next) {
   .then(function(json) {
     return(JSON.parse(json.body))
   })
-  .then(function(data) {
-    res.send(data);
-  })
+  .then(res.send)
   // .catch(next) //good old habits
 })
 
