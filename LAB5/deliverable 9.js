@@ -23,7 +23,7 @@ function get_eve(callback) {
   })  
 }
 
-get_eve(function(err, data) {
+get_eve(function(data) {
     console.log(data.toString());
 });
 
