@@ -18,14 +18,18 @@ app.listen(9300);
 
 app.get('/', function (req, res, next) {
   request(eve_server)
-  .then(JSON.parse) //parse res
-  .then(res.send.bind(res))
-  .catch(next) //good old habits
+  .then(function(json) {
+    return(JSON.parse(json))
+  })
+  .then(function(data) {
+    res.send(data);
+  })
+  // .catch(next) //good old habits
 })
 
 
 
-// error handling just in case
-app.use(function (err, req, res, next) {
-  console.log("Ooops something went wrong");
-})
+// // error handling just in case
+// app.use(function (err, req, res, next) {
+//   console.log("Ooops something went wrong");
+// })
