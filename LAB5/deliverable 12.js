@@ -11,17 +11,17 @@ var table_ify = function(json) {
   var rows = []
   
   items = json._items;
-  
-  for (var i = items.length - 1; i >= 0; i--) {
-    var entry = items[i].map(function (entry) {
+  var entry = items.map(function (entry) {
       return [entry._updated, entry.temp, entry.long, entry._links, entry.lat, entry._created, entry._id, entry._etag]
-    });
-    rows += entry;
-  }
+    });  
+  // for (var i = items.length - 1; i >= 0; i--) {
+    
+  //   rows += entry;
+  // }
   var table = new AsciiTable().fromJSON({
     title: 'Get Response'
   , heading: [ 'updated', 'temp', 'long', 'links', 'lat', 'created', 'id', 'etag' ]
-  , rows: rows
+  , rows: entry
   })
   return(table)
 }
