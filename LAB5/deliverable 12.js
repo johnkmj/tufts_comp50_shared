@@ -25,6 +25,7 @@ app.listen(9300);
 
 
 app.get('/', function (req, res, next) {
+  res.setHeader('Content-Type', 'application/json');
   request(eve_server)
   .then(function(json) {
     return(JSON.parse(json.body))
