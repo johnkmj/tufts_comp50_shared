@@ -1,34 +1,21 @@
-var request = require('request');
-var express = require('express');
-var app = express();
+var http = require('http');
 
-// gets and returns eve
-function get_eve(callback) {
-  // Configure the request
-  var options = {
-    url: 'http://localhost:5000/data',
-    method: 'GET',
-  }
+var options = {
+  host: 'localhost:5000',
+  path: '/data'
+};
 
-  // Start the request
-  request(options, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    // return(body);
-    callback(body);
-  }
-  else
-    callback(error);
-    // console.log(error);
-  })  
+callback = function(response) {
+  var str = '';
+
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  response.on('end', function () {
+    console.log(str);
+  });
 }
 
-get_eve(function(data) {
-    console.log(data.toString());
-});
-
-// // at my port
-// app.listen(9300);
-
-// app.get('/', function (req, res) {
-//   get_eve().res.send()
-// })
+// http request is quite ugly tbh.
+http.request(options, callback).end();
