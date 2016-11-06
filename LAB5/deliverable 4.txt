@@ -1,1 +1,0 @@
-The output is the same. They're querying the same server.
