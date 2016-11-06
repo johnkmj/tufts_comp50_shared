@@ -51,4 +51,5 @@ app.get('/', function (req, res, next) {
 // error handling just in case
 app.use(function (err, req, res, next) {
   console.log("Ooops something went wrong");
+  console.log(err);
 })
